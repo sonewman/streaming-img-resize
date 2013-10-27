@@ -36,18 +36,19 @@ module.exports = function(req, res){
   hash.update(String(Math.floor(Math.random()*999999999) + 1))
 
   var fileName = hash.digest('hex').substring(0, 8) + ext
+  var fullFilePath = req.files.image.path
 
-  gm(fs.createReadStream(req.files.image.path), fileName)
+  gm(fs.createReadStream(fullFilePath), fileName)
     .size({bufferStream: true}, function (err, size) {
       // console.log(err, size)
       this.resize(200, 200)
       this.stream(function(err, stdout, stderr) {
-        res.writeHead(200);
+        res.writeHead(200)
         stdout.pipe(res)
         // .pipe(base64.encode()).pipe(through(function () {}))
         
-
         res.on('finish', function () {
+          fs.unlink(fullFilePath)
           //  delete file from server async
         })
       })
