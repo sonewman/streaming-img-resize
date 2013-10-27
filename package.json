@@ -1,0 +1,23 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.2",
+    "jade": "*",
+    "rsz": "~0.2.2",
+    "gm": "~1.13.3",
+    "base64-stream": "~0.1.2",
+    "through": "~2.3.4",
+    "formidable": "~1.0.14"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-exec": "~0.4.2",
+    "browserify": "~2.34.3",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
